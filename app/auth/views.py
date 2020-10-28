@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user
-
+from flask_login import login_user, logout_user,current_user,login_required
 from app.auth import auth
+from .forms import RegistrationForm,Login,updateAccount,postForm
 from app.models import User
 from ..email import email_message
 
@@ -66,3 +66,5 @@ def signup():
 def logout():
     logout_user()
     return redirect(url_for('auth.login'))
+
+
