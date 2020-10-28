@@ -15,18 +15,6 @@ class RegistrationForm(FlaskForm):
 
     submit = SubmitField('Sign up')
 
-    def Validate_email(self,data_field):
-        user = User.query.filter_by(email = data_field.data).first()
-        if user:
-            raise ValidationError('There is an account with that email')
-
-    def validate_username(self,data_field):
-        user =  User.query.filter_by(username = data_field.data).first()
-        if user:
-            raise ValidationError('That username is taken')
-
-
-
 
 class Login(FlaskForm):
     email = StringField('email', validators =[DataRequired(),Email()])
@@ -41,18 +29,6 @@ class updateAccount(FlaskForm):
     confirm_password =PasswordField('password',validators = [DataRequired(),EqualTo('password')])
 
     submit = SubmitField('update')
-
-    def Validate_email(self,email):
-        if email.data != current_user.email:
-            user = User.query.filter_by(email = email.data).first()
-            if user:
-                raise ValidationError('There is an account with that email')
-
-    def validate_username(self,username):
-        if username.data != current_user.username:
-            user = User.query.filter_by(username = username.data).first()
-            if user:
-                raise ValidationError('That username is taken')
 
 class postForm(FlaskForm):
     title = StringField('Title' , validators = [DataRequired()])

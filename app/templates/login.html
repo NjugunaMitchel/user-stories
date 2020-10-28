@@ -6,7 +6,7 @@
 {% block content %}
 
   <div class="container">
-    <form styles="border-radius: '20px';border: 1px solid grey; background-color:grey">
+    <form styles="border-radius: '20px';border: 1px solid grey; background-color:grey" method ="POST" action="login">
       <h2>Log in</h2>
       <div class="form-group">
         <label>Username</label>
@@ -17,7 +17,7 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" placeholder="Password" name="password">
         </div>
-        <button id="hellobutton" type="submit" class="d-block mx-auto">Login</button>
+        <button type="submit" class="d-block mx-auto">Login</button>
   
   </div>
 {% endblock %}

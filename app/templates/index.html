@@ -2,9 +2,10 @@
 {% block content %}
   {% for post in posts %}
   <div class="card">
+    <h3>Pitch</h3>
       <img src="{{url_for('static',filename = 'prof/'+ post.author.profile_photo) }}">
       <span> {{ post.author.username }} {{ post.datetime.strftime('%Y-%M-%D') }}</span>
       <p> {{ post.content }}</p>
   </div>
-
-{% endblock content %}
+  {% endfor%}
+{% endblock %}
