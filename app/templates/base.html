@@ -12,17 +12,19 @@
 </head>
 
 <body>
-    
-    {% block content%}
+    {% block navbar %}
+    {% include 'navbar.html' %}
+    {% endblock %}
     {% with messages = get_flashed_messages %}
     {% if messages %}
     {% for message in message %}
     <span>
         {{message}}
     </span>
-    {% endblock %}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
 
-    {% endblock %}
     {% block content %}
 
     {% endblock %}

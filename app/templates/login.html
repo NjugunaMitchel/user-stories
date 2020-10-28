@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static',filename='css/forms.css')}}">
+{% endblock %}
+{% block content %}
+
+  <div class="container">
+    <form styles="border-radius: '20px';border: 1px solid grey; background-color:grey">
+      <h2>Log in</h2>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" placeholder="Username" name="username">
+      </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" placeholder="Password" name="password">
+        </div>
+        <button id="hellobutton" type="submit" class="d-block mx-auto">Login</button>
+  
+  </div>
+{% endblock %}
