@@ -1,0 +1,5 @@
+.container-fluid{
+    background: url('https://images.unsplash.com/photo-1519445319698-eed4e883433f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+    background-repeat: no-repeat;
+    object-fit: cover;
+}

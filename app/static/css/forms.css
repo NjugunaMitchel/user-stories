@@ -1,4 +1,6 @@
 .form{
     border-radius: 20px;
-    border: 1px solid grey
+    border: 1px solid grey;
+    margin: auto;
+    padding:10px;
 }
