@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% import'bootstrap/wtf.html' as wtf %}
 {% block styles %}
 {{super()}}
 <link rel="stylesheet" href="{{url_for('static',filename='css/forms.css')}}">
@@ -6,8 +6,9 @@
 {% block content %}
 
   <div class="container">
-    <form styles="border-radius: '20px';border: 1px solid grey; background-color:grey" method ="POST" action="login">
-      <h2>Log in</h2>
+    <form style = "padding:10px; background-color:rgba(128, 128, 128, 0.336);margin:auto;
+    width:70%;" method ="POST" action="login">
+      <h2 style="text-align:center;">Log in</h2>
       <div class="form-group">
         <label>Username</label>
         <input type="text" class="form-control" placeholder="Username" name="username">

@@ -1,11 +1,26 @@
-{% extends 'base.html' %}
-{% block content %}
-  {% for post in posts %}
-  <div class="card">
-    <h3>Pitch</h3>
-      <img src="{{url_for('static',filename = 'prof/'+ post.author.profile_photo) }}">
-      <span> {{ post.author.username }} {{ post.datetime.strftime('%Y-%M-%D') }}</span>
-      <p> {{ post.content }}</p>
-  </div>
-  {% endfor%}
-{% endblock %}
+{% extends 'base.html'%}  {% import'bootstrap/wtf.html' as wtf %}
+ {% block style %} {{ super() }}
+  <!--super() function tells Jinja not to override any code that is defined in the block-->
+  <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" />
+  {% endblock %}
+   {% block content %}
+      <div class="container-fluid" style="padding:0;margin:0;">
+          <p style="font-size: 30px; float: left; height:100vh;width:100vw;background: url('https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
+          background-repeat: no-repeat;background-size: cover;background-position: center;" class="col-md-12">
+            <strong style="float:left; width:500px;font-style: italic;margin-top:120px;">
+              <span style="font-size: larger;color:black;">What can you do in 60 sec?......</span><br />
+              If  you only had 60 seconds to impress someone. One minute to
+              make or break you.How would it end?
+            </strong>
+            <br>
+              <a
+                class="btn btn-primary"
+                href="{{url_for('auth.signup')}}"
+                style="background-color: #002457; margin-top: 300px; font-size: 2rem;"
+                ><span aria-hidden="true"> Sign up</span></a>
+          
+           </p>
+         
+      </div>
+   
+    {% endblock %}
