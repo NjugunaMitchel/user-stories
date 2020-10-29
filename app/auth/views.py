@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user,current_user,login_required
+from flask_login import login_user, logout_user
+
 from app.auth import auth
 from app.models import User
 from ..email import email_message
@@ -14,16 +15,16 @@ def login():
         print(username)
         user = User.query.filter_by(username=username).first()
         if user is None:
-            message = 'username taken'
-            return render_template('login.html', message=message)
+            error = 'A user with that username  does not exist'
+            return render_template('login.html', error=error)
         is_correct_password = user.check_password(password)
         print(is_correct_password)
         if not is_correct_password:
-            message = 'Incorrect password'
-            return render_template('login.html', message=message)
+            error = 'A user with that password does not exist'
+            return render_template('login.html', error=error)
         login_user(user)
         return redirect('/')
-    return render_template('index.html')
+    return render_template('login.html')
 
 
 @auth.route('/signup', methods=['GET', 'POST'])
@@ -46,7 +47,7 @@ def signup():
         else:
             user = User.query.filter_by(username=username).first()
             if user is not None:
-                error = 'Username taken'
+                error = 'A user with that name already exists'
                 return render_template('signup.html', error=error)
             user = User.query.filter_by(email=email).first()
             if user is not None:
@@ -56,7 +57,7 @@ def signup():
             user.set_password(password)
             user.save()
            
-            return redirect(url_for('main.index'))
+            return redirect(url_for('auth.login'))
 
     return render_template('signup.html')
 
@@ -65,5 +66,3 @@ def signup():
 def logout():
     logout_user()
     return redirect(url_for('auth.login'))
-
-

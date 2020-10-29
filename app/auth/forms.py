@@ -1,37 +1,25 @@
 from flask_wtf import FlaskForm
-from flask_login import current_user
-from wtforms import StringField,PasswordField,SubmitField,TextAreaField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
-from ..models import User
-from wtforms import ValidationError
+from wtforms import StringField, SelectField, TextAreaField, SubmitField
+from wtforms.validators import Required
 
 
-class RegistrationForm(FlaskForm):
-
-    username = StringField('username',validators = [DataRequired(),Length(min=3, max=15)])
-    email = StringField('email', validators =[DataRequired(),Email()])
-    Password = PasswordField('password',validators = [DataRequired()])
-    confirm_password =PasswordField('password',validators = [DataRequired(),EqualTo('password')])
-
-    submit = SubmitField('Sign up')
+class PostForm(FlaskForm):
+    title = StringField('Title', validators=[Required()])
+    post = TextAreaField('Pitch', validators=[Required()])
+    category = SelectField('Category', choices=[('PRODUCT', 'PRODUCT'), ('IDEA', 'IDEA'), ('Business', 'Business')],
+                           validators=[Required()])
+    submit = SubmitField('Post')
 
 
-class Login(FlaskForm):
-    email = StringField('email', validators =[DataRequired(),Email()])
-    Password = PasswordField('password',validators = [DataRequired()])
-    submit = SubmitField('Login')
-    
+class CommentForm(FlaskForm):
+    comment = TextAreaField('Comment', validators=[Required()])
+    submit = SubmitField('Post')
 
-class updateAccount(FlaskForm):
-    username = StringField('username',validators = [DataRequired(),Length(min=3, max=15)])
-    email = StringField('email', validators =[DataRequired(),Email()])
-    Password = PasswordField('password',validators = [DataRequired()])
-    confirm_password =PasswordField('password',validators = [DataRequired(),EqualTo('password')])
 
-    submit = SubmitField('update')
+class Vote(FlaskForm):
+    submit = SelectField('Like')
 
-class postForm(FlaskForm):
-    title = StringField('Title' , validators = [DataRequired()])
-    content = TextAreaField('content', validators=[DataRequired()])
-    submit = SubmitField('post')
 
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('bio', validators=[Required()])
+    submit = SubmitField('Post')
