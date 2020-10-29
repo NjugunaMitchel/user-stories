@@ -3,12 +3,13 @@ import os
 
 class Config:
     debug = True
-    SECRET_KEY = 'e00060cf5211571fa30d8af1c0edcb0734bea0ad'
+    SECRET_KEY = os.environ.get("SECRET_KEY")
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:2345@localhost/users'
 
 
 class prodConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URI")
+    
 
 
 class DevConfig(Config):
