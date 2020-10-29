@@ -1,1 +1,1 @@
-web: gunicorn manage:appg
+web: gunicorn manage:app
